@@ -134,11 +134,6 @@ See the full text in the [LICENSE](/LICENSE) file.
 
 ---
 
-Here is the updated **Author section with clickable badges**, replacing the raw links exactly as requested.
-You can paste this block directly into your refined README.
-
----
-
 ## 🏗️ Author
 
 **Talha Ahmad**
