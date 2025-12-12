@@ -29,8 +29,8 @@ namespace PizzaX.Domain.Pizzas.Entities
         private Pizza(decimal price, PizzaSize size, int amount, int varietyId, string? description, byte[]? image)
         {
             // Validation Check
-            Gaurd.AgainstNegative(price, nameof(Price));
-            Gaurd.AgainstZeroOrLess(amount, nameof(Amount));
+            Guard.AgainstNegative(price, nameof(Price));
+            Guard.AgainstZeroOrLess(amount, nameof(Amount));
 
             // Assigning values
             Price = price;
@@ -48,7 +48,7 @@ namespace PizzaX.Domain.Pizzas.Entities
         // Method - Update Price
         public void UpdatePrice(decimal newPrice)
         {
-            Gaurd.AgainstNegative(newPrice, nameof(Price));
+            Guard.AgainstNegative(newPrice, nameof(Price));
             Price = newPrice;
             MarkUpdated();
         }
@@ -56,7 +56,7 @@ namespace PizzaX.Domain.Pizzas.Entities
         // Method - Update Amount
         public void UpdateAmount(int newAmount)
         {
-            Gaurd.AgainstZeroOrLess(newAmount, nameof(Amount));
+            Guard.AgainstZeroOrLess(newAmount, nameof(Amount));
             Amount = newAmount;
             MarkUpdated();
         }

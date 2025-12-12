@@ -1,6 +1,6 @@
 ﻿using PizzaX.Domain.Common;
 using PizzaX.Domain.Users.Enums;
-using PizzaX.Domain.ValueObjects;
+using PizzaX.Domain.Users.ValueObjects;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -29,8 +29,8 @@ namespace PizzaX.Domain.Users.Entities
         private User(string username, string password, Email email, UserRole role)
         {
             // Validation Check
-            Gaurd.AgainstNull(username, nameof(Username));
-            Gaurd.AgainstNull(password, nameof(Password));
+            Guard.AgainstNull(username, nameof(Username));
+            Guard.AgainstNull(password, nameof(Password));
 
             // Assigning values
             Username = username;
@@ -46,7 +46,7 @@ namespace PizzaX.Domain.Users.Entities
         // Method - Change password
         public void ChangePassword(string newPass)
         {
-            Gaurd.AgainstNull(newPass, nameof(Password));
+            Guard.AgainstNull(newPass, nameof(Password));
             Password = newPass;
             MarkUpdated();
         }

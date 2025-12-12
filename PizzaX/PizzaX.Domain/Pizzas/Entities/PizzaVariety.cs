@@ -14,14 +14,14 @@ namespace PizzaX.Domain.Pizzas.Entities
 
         public PizzaVariety(string name)
         {
-            Gaurd.AgainstNull(name, nameof(Name));
+            Guard.AgainstNull(name, nameof(Name));
             Name = name;
         }
 
         // Method - Update name of the pizza variety
         public void Rename(string newName)
         {
-            Gaurd.AgainstNull(newName, nameof(Name));
+            Guard.AgainstNull(newName, nameof(Name));
             Name = newName;
             MarkUpdated();
         }

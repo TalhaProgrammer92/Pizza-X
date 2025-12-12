@@ -1,6 +1,6 @@
 ﻿namespace PizzaX.Domain.Common
 {
-    public static class Gaurd
+    public static class Guard
     {
         public static void AgainstNull(string value, string property)
         {

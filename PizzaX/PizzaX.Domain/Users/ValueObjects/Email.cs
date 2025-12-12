@@ -1,7 +1,7 @@
 ﻿using PizzaX.Domain.Common;
 using System.Text.RegularExpressions;
 
-namespace PizzaX.Domain.ValueObjects
+namespace PizzaX.Domain.Users.ValueObjects
 {
     public sealed class Email
     {
@@ -12,7 +12,7 @@ namespace PizzaX.Domain.ValueObjects
         public static Email Create(string value)
         {
             // Checking if email is null
-            Gaurd.AgainstNull(value, nameof(Email));
+            Guard.AgainstNull(value, nameof(Email));
 
             // Matching pattern of the email
             var pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
