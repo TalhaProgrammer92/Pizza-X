@@ -147,7 +147,20 @@ namespace PizzaX.Domain.Orders.Entities
         // Method - Mark as failed
         public void MarkPaymentAsFailed()
         {
+            if (PaymentStatus == PaymentStatus.Refunded)
+                throw new DomainException("Payment already refunded");
+
             PaymentStatus = PaymentStatus.Failed;
+            MarkUpdated();
+        }
+
+        // Method - Mark as refunded
+        public void MarkPaymentAsRefunded()
+        {
+            if (PaymentStatus != PaymentStatus.Paid)
+                throw new DomainException("Payment must be paid.");
+
+            PaymentStatus = PaymentStatus.Refunded;
             MarkUpdated();
         }
     }

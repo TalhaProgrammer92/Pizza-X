@@ -11,6 +11,7 @@ namespace PizzaX.Domain.Orders.ValueObjects
         private OrderNumber(string value)
         {
             Guard.AgainstNull(value, nameof(OrderNumber));
+
             Value = value;
         }
 
