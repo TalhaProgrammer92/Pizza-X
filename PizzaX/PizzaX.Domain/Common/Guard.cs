@@ -19,5 +19,11 @@
             if (value <= 0)
                 throw new DomainException($"{property} must be greater than zero.");
         }
+
+        public static void AgainstRange(int rangeStart, int rangeEnd, int value, string property)
+        {
+            if (value < rangeStart || value > rangeEnd)
+                throw new DomainException($"{property} must be between the range of {rangeStart} and {rangeEnd}.");
+        }
     }
 }

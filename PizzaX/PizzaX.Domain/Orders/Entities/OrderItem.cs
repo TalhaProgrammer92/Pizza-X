@@ -1,5 +1,7 @@
 ﻿using PizzaX.Domain.Common;
+using PizzaX.Domain.Pizzas.ValueObjects;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Metrics;
 
 namespace PizzaX.Domain.Orders.Entities
 {
@@ -14,12 +16,15 @@ namespace PizzaX.Domain.Orders.Entities
         [Required]
         public decimal UnitPrice { get; private set; }
 
-        public decimal TotalPrice => Quantity * UnitPrice;
+        public PizzaCustomization? PizzaCustomization { get; private set; }
+
+        public decimal TotalPrice
+            => (UnitPrice * Quantity) + PizzaCustomization!.CalculateExtraCharges();
 
         // Constructors
         private OrderItem() { }
 
-        public OrderItem(int pizzaId, int quantity, decimal unitPrice)
+        public OrderItem(int pizzaId, int quantity, decimal unitPrice, PizzaCustomization? pizzaCustomization = null)
         {
             Guard.AgainstZeroOrLess(quantity, nameof(Quantity));
             Guard.AgainstNegative(unitPrice, nameof(UnitPrice));
@@ -27,6 +32,7 @@ namespace PizzaX.Domain.Orders.Entities
             PizzaId = pizzaId;
             Quantity = quantity;
             UnitPrice = unitPrice;
+            PizzaCustomization = pizzaCustomization ?? PizzaCustomization.Create();
         }
 
         // Method - Increase quantity
